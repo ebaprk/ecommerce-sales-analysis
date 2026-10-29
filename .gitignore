@@ -1,0 +1,19 @@
+# Local Python environment and editor files
+.venv/
+.venv-py39-backup/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.ipython/
+.mplconfig/
+**/.mplconfig/
+
+# Dataset files: download locally; do not upload the UCI workbook to GitHub
+data/raw/*
+!data/raw/.gitkeep
+
+# Generated analysis exports can be recreated from the notebook
+data/processed/*
+!data/processed/.gitkeep
