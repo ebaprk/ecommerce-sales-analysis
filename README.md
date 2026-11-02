@@ -4,7 +4,7 @@ A beginner-friendly portfolio project using the UCI Online Retail dataset. The g
 
 ## Project status
 
-Week 1 exploration is complete. The notebook records the initial data checks and written observations. The dataset is not included in this repository; download it from the [UCI Online Retail dataset page](https://archive.ics.uci.edu/dataset/352/online+retail) and save the Excel file as:
+Weeks 1–4 cover exploration, cleaning, SQL, and customer behavior. Week 5 is a guided exercise for building a small sales dashboard and writing recommendations. The dataset is not included in this repository; download it from the [UCI Online Retail dataset page](https://archive.ics.uci.edu/dataset/352/online+retail) and save the Excel file as:
 
 `data/raw/Online Retail.xlsx`
 
@@ -52,6 +52,8 @@ To leave the environment when you are done, run `deactivate` in Terminal.
 ## First notebook
 
 Start with `notebooks/01_explore_online_retail.ipynb`. The first cells load the workbook; after that, you write your own code to explore the columns, missing values, unusual quantities, invoice counts, and country filters. Short hints and spaces for written observations guide you through Week 1.
+
+For the current exercise, open `notebooks/05_sales_dashboard.ipynb`. Run it from the top and replace each `None` with your own code. It teaches the pandas and plotting steps before asking you to build the dashboard. The final image belongs in `dashboard/week5_sales_dashboard.png`.
 
 ## Planned analysis questions
 
