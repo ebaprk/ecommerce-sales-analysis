@@ -1,68 +1,65 @@
-# E-commerce Sales Performance & Customer Behavior Analysis
+# E-commerce Sales & Customer Behavior Analysis
 
-A beginner-friendly portfolio project using the UCI Online Retail dataset. The goal is to learn how to inspect transaction data with Python, then build toward business questions about sales trends, products, countries, and repeat purchasing.
+A six-part learning project using the UCI Online Retail dataset. The notebooks develop Python/pandas analysis, cleaning decisions, SQL questions, customer metrics, visualizations, and a final case-study exercise.
 
-## Project status
+**Project status:** A guided portfolio workbook with saved outputs and unfinished exercise cells. The presence of a dashboard image or notebook does not mean every exercise or the final written case study is complete.
 
-Weeks 1–4 cover exploration, cleaning, SQL, and customer behavior. Week 5 is a guided exercise for building a small sales dashboard and writing recommendations. The dataset is not included in this repository; download it from the [UCI Online Retail dataset page](https://archive.ics.uci.edu/dataset/352/online+retail) and save the Excel file as:
+## Notebook sequence
 
-`data/raw/Online Retail.xlsx`
+| Notebook | Focus |
+| --- | --- |
+| [01 — Explore](notebooks/01_explore_online_retail.ipynb) | Inspect invoice lines, missing values, unusual quantities, and countries. |
+| [02 — Clean](notebooks/02_cleaning.ipynb) | Define a positive-sales policy and save a processed CSV. |
+| [03 — SQL](notebooks/03_sql_analysis.ipynb) | Create a local SQLite table and write eight business queries. |
+| [04 — Customers](notebooks/04_customer_behavior.ipynb) | Repeat customers, invoice values, and distribution comparisons. |
+| [05 — Dashboard](notebooks/05_sales_dashboard.ipynb) | Build sales KPIs, a chart dashboard, and recommendations. |
+| [06 — Case study](notebooks/06_final_case_study.ipynb) | Audit results, compare complete periods, and prepare a final report. |
 
-Keep the original workbook in `data/raw/`. The `.gitignore` file prevents raw and processed data files from being uploaded to GitHub.
+## Dataset
+
+Download the Excel workbook from [UCI Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail) and save it as:
+
+```text
+data/raw/Online Retail.xlsx
+```
+
+The workbook and generated data files are excluded from Git. See UCI’s source page for attribution and usage terms. A row represents an invoice line; a complete invoice can contain multiple rows.
+
+## Setup
+
+Python 3.12 is recommended. From a terminal on macOS or Linux:
+
+```sh
+git clone https://github.com/ebaprk/ecommerce-sales-analysis.git
+cd ecommerce-sales-analysis
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+mkdir -p data/raw data/processed
+jupyter notebook
+```
+
+On Windows, activate the environment with `.venv\Scripts\Activate.ps1` in PowerShell. Alternatively, open the repository in VS Code with the Python and Jupyter extensions and choose `.venv` as the notebook kernel.
+
+Work through the notebooks in order. Read each worked example, write your own code in the exercise cells, and complete the written interpretations. Later notebooks require `data/processed/valid_sales.csv` from the cleaning notebook. SQLite runs locally through Python’s standard library; no database server is required.
+
+## Outputs and metric definitions
+
+- [SQL working file](sql/analysis_queries.sql).
+- [Saved dashboard image](dashboard/week5_sales_dashboard.png).
+- [Report charts](reports/).
+- `reports/final_case_study.md` is a target deliverable for the final notebook; it is not currently included.
+
+Positive-sales revenue uses the retained line quantities and prices after the documented exclusions. It is distinct from net accounting revenue because returns and cancellations are set aside. Count distinct `InvoiceNo` values for orders. Customer-level measures exclude missing customer IDs; keep that denominator separate from overall sales totals. Compare complete months fairly rather than treating partial-month totals as equivalent exposure.
 
 ## Folder guide
 
-- `data/raw/` — original downloaded data (kept out of Git)
-- `data/processed/` — cleaned or derived data (kept out of Git)
-- `notebooks/` — learning and analysis notebooks
-- `src/` — reusable Python code as the project grows
-- `sql/` — SQL queries for later analysis
-- `dashboard/` — dashboard files and screenshots
-- `reports/` — written findings and recommendations
-
-## Setup on macOS
-
-Open Terminal and move into this project folder:
-
-```bash
-cd "/Users/abepark/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/ecommerce-sales-analysis"
+```text
+notebooks/       Guided analysis and exercises
+sql/             SQL working queries
+dashboard/       Saved dashboard image
+reports/         Saved charts and future written findings
+requirements.txt Python dependencies
 ```
 
-A virtual environment is the project’s private Python setup. The `.venv/` folder holds the interpreter and libraries for this project, so other projects can use different versions without conflicts.
-
-Create and activate the local virtual environment:
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-```
-
-Install the project libraries:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python -m ipykernel install --prefix .venv --name ecommerce-sales-analysis --display-name "Python (ecommerce-sales-analysis)"
-```
-
-In VS Code, open this folder. The local workspace settings point Python to `.venv/bin/python`. To use notebooks in VS Code, install the Microsoft Python and Jupyter extensions if VS Code prompts you for them, then select the `.venv` kernel when prompted. The `.vscode/` folder is local-only and is excluded from Git.
-
-To leave the environment when you are done, run `deactivate` in Terminal.
-
-## First notebook
-
-Start with `notebooks/01_explore_online_retail.ipynb`. The first cells load the workbook; after that, you write your own code to explore the columns, missing values, unusual quantities, invoice counts, and country filters. Short hints and spaces for written observations guide you through Week 1.
-
-For the current exercise, open `notebooks/05_sales_dashboard.ipynb`. Run it from the top and replace each `None` with your own code. It teaches the pandas and plotting steps before asking you to build the dashboard. The final image belongs in `dashboard/week5_sales_dashboard.png`.
-
-## Planned analysis questions
-
-1. How much revenue is represented by the recorded transactions?
-2. How do sales change over time?
-3. Which products and countries contribute most to sales?
-4. How often do customers return to purchase again?
-5. What practical recommendations follow from the analysis?
-
-## Publishing to GitHub
-
-A useful first upload includes this README, `.gitignore`, `requirements.txt`, notebooks, SQL queries, reusable source code, dashboard materials, and a short report. Do not upload the downloaded workbook or private environment files. Cite UCI as the dataset source in your final report.
+Create `data/raw/` and `data/processed/` locally. Keep the original workbook unchanged so the cleaning decisions remain reproducible.
